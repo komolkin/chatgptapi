@@ -28,7 +28,7 @@ function App() {
       <div className="response">
         {response && (
           <div style={{ marginTop: "8rem" }}>
-            <div className="card" style={{ marginBottom: "1rem" }}>
+            <div className="card" style={{ marginBottom: "0.5rem" }}>
               <div className="card-body">
                 <b>Me:</b> {message}
               </div>
@@ -41,16 +41,13 @@ function App() {
           </div>
         )}
       </div>
-      <Form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexFlow: "row" }}
-      >
+      <Form onSubmit={handleSubmit} className="input-group mb-3">
         <Form.Control
           value={message}
           placeholder="Ask Kevin Durant any question"
           onChange={(e) => setMessage(e.target.value)}
         />
-        <Button variant="dark" type="submit" style={{ marginLeft: "10px" }}>
+        <Button variant="dark" type="submit">
           Send
         </Button>
       </Form>
