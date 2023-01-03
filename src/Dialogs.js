@@ -23,7 +23,9 @@ function Dialogs() {
               <div>
                 <div className="card" style={{ marginBottom: "0.5rem" }}>
                   <div className="card-body">
-                    <b>Me:</b> {dialog.message}
+                    <b>Me:</b> {dialog.response}
+                    <br />
+                    <b>KD:</b> {dialog.message}
                   </div>
                 </div>
               </div>

@@ -1,5 +1,5 @@
 const OpenAI = require("openai");
-// const { Configuration, OpenAIApi } = OpenAI;
+const { Configuration, OpenAIApi } = OpenAI;
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -18,30 +18,44 @@ mongoose
   .catch((err) => console.log(err));
 
 const dialogSchema = new mongoose.Schema({
-  message: String,
   response: String,
+  message: String,
 });
 
 const Dialog = mongoose.model("Dialog", dialogSchema);
 
-// const configuration = new Configuration({
-//   organization: "org-9WevQbvggItOcNJtMQyQhS4L",
-//   apiKey: "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",
-// });
-// const openai = new OpenAIApi(configuration);
-// const response = await openai.listEngines();
+const configuration = new Configuration({
+  organization: "org-9WevQbvggItOcNJtMQyQhS4L",
+  apiKey: "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",
+});
+const openai = new OpenAIApi(configuration);
 
 app.get("/", (req, res) => {
   res.send(`Example app listening at ${port}`);
 });
 
-app.post("/", (req, res) => {
+// app.post("/", (req, res) => {
+//   Dialog.create({
+//     message: req.body.message,
+//     response: req.body.response,
+//   })
+//     .then((doc) => console.log(doc))
+//     .catch((err) => console.log(err));
+// });
+
+app.post("/", async (req, res) => {
+  const { message } = req.body;
+  const response = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: `Pretend you are Kevin Durant. Person: ${message}? Kevin:`,
+    max_tokens: 50,
+    temperature: 0,
+  });
+  console.log(response.data);
   Dialog.create({
-    message: req.body.message,
-    response: req.body.response,
-  })
-    .then((doc) => console.log(doc))
-    .catch((err) => console.log(err));
+    response: message,
+    message: response.data.choices[0].text,
+  });
 });
 
 app.get("/dialogs", (req, res) => {
@@ -49,22 +63,6 @@ app.get("/dialogs", (req, res) => {
     .then((items) => res.json(items))
     .catch((err) => console.log(err));
 });
-
-// app.post("/", async (req, res) => {
-//   const { message } = req.body;
-//   const response = await openai.createCompletion({
-//     model: "text-davinci-003",
-//     prompt: `Pretend you are Kevin Durant.
-//     Person: ${message}?
-//     Kevin:`,
-//     max_tokens: 100,
-//     temperature: 0,
-//   });
-//   console.log(response.data);
-//   if (response.data.choices[0].text) {
-//     res.json({ message: response.data.choices[0].text });
-//   }
-// });
 
 app.listen(port, () => {
   console.log(`Example app listening at ${port}`);
