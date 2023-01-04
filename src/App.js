@@ -25,8 +25,14 @@ function App() {
 
   // onChange={(e) => setMessage(e.target.value)}
 
+  function refreshPage() {
+    setTimeout(function () {
+      window.parent.location = window.parent.location.href;
+    }, 3000);
+  }
+
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     fetch("http://localhost:3001/", {
       method: "POST",
@@ -54,7 +60,7 @@ function App() {
           // onChange={handleChange}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <Button variant="dark" type="submit">
+        <Button variant="dark" type="submit" onClick={(e) => refreshPage()}>
           Send
         </Button>
       </Form>
