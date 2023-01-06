@@ -28,13 +28,15 @@ function App() {
   const initialText = "Send";
   const [buttonText, setButtonText] = useState(initialText);
 
-  function refreshPage() {
+  const refreshPage = (event) => {
+    event.currentTarget.classList.toggle("disabled");
+
     setButtonText("Sending...");
 
     setTimeout(function () {
       window.parent.location = window.parent.location.href;
     }, 3000);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,13 +69,13 @@ function App() {
         <Form onSubmit={handleSubmit} className="input-group mb-3">
           <Form.Control
             name="message"
-            placeholder="Ask Product Designer any question"
+            placeholder="Ask Product Designer anything..."
             // value={message.message}
             value={message}
             // onChange={handleChange}
             onChange={(e) => setMessage(e.target.value)}
           />
-          <Button variant="dark" type="submit" onClick={(e) => refreshPage()}>
+          <Button variant="dark" type="submit" onClick={refreshPage}>
             {buttonText}
           </Button>
         </Form>
