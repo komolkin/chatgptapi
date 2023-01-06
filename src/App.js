@@ -25,7 +25,12 @@ function App() {
 
   // onChange={(e) => setMessage(e.target.value)}
 
+  const initialText = "Send";
+  const [buttonText, setButtonText] = useState(initialText);
+
   function refreshPage() {
+    setButtonText("Sending...");
+
     setTimeout(function () {
       window.parent.location = window.parent.location.href;
     }, 3000);
@@ -46,24 +51,33 @@ function App() {
   };
 
   return (
-    <div style={{ width: "400px", margin: "auto auto", marginTop: "8rem" }}>
-      <div>
-        <Dialogs />
-      </div>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
+      <div style={{ width: "400px" }}>
+        <div>
+          <Dialogs />
+        </div>
 
-      <Form onSubmit={handleSubmit} className="input-group mb-3">
-        <Form.Control
-          name="message"
-          placeholder="Ask Kevin Durant any question"
-          // value={message.message}
-          value={message}
-          // onChange={handleChange}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <Button variant="dark" type="submit" onClick={(e) => refreshPage()}>
-          Send
-        </Button>
-      </Form>
+        <Form onSubmit={handleSubmit} className="input-group mb-3">
+          <Form.Control
+            name="message"
+            placeholder="Ask Product Designer any question"
+            // value={message.message}
+            value={message}
+            // onChange={handleChange}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <Button variant="dark" type="submit" onClick={(e) => refreshPage()}>
+            {buttonText}
+          </Button>
+        </Form>
+      </div>
     </div>
   );
 }

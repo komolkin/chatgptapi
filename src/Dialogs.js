@@ -24,8 +24,16 @@ function Dialogs() {
                 <div className="card" style={{ marginBottom: "0.5rem" }}>
                   <div className="card-body">
                     <b>Me:</b> {dialog.response}
-                    <br />
-                    <b>KD:</b> {dialog.message}
+                  </div>
+                </div>
+                <div className="card" style={{ marginBottom: "0.5rem" }}>
+                  <div
+                    className="card-body"
+                    onClick={() =>
+                      navigator.clipboard.writeText(`${dialog.message}`)
+                    }
+                  >
+                    <b>PD:</b> {dialog.message}
                   </div>
                 </div>
               </div>

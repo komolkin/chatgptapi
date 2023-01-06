@@ -26,7 +26,7 @@ const Dialog = mongoose.model("Dialog", dialogSchema);
 
 const configuration = new Configuration({
   organization: "org-9WevQbvggItOcNJtMQyQhS4L",
-  apiKey: "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",
+  apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 
@@ -47,8 +47,8 @@ app.post("/", async (req, res) => {
   const { message } = req.body;
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `Pretend you are Kevin Durant. Person: ${message}? Kevin:`,
-    max_tokens: 50,
+    prompt: `Pretend you are Product Designer. Person: ${message}? You:`,
+    max_tokens: 100,
     temperature: 0,
   });
   console.log(response.data);
