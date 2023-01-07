@@ -7,9 +7,6 @@ import { Button, Form } from "react-bootstrap";
 // import axios from "axios";
 
 function App() {
-  // const [message, setMessage] = useState({
-  //   message: "",
-  // });
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
 
@@ -62,6 +59,7 @@ function App() {
       }}
     >
       <div style={{ width: "400px" }}>
+        <h1 className="font-bold text-center mb-8">Product Designer</h1>
         <div>
           <Dialogs />
         </div>
