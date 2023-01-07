@@ -22,13 +22,13 @@ function App() {
 
   // onChange={(e) => setMessage(e.target.value)}
 
-  const initialText = "Send";
+  const initialText = "Ask";
   const [buttonText, setButtonText] = useState(initialText);
 
   const refreshPage = (event) => {
     event.currentTarget.classList.toggle("disabled");
 
-    setButtonText("Sending...");
+    setButtonText("Asking...");
 
     setTimeout(function () {
       window.parent.location = window.parent.location.href;
@@ -59,7 +59,9 @@ function App() {
       }}
     >
       <div style={{ width: "400px" }}>
-        <h1 className="font-bold text-center mb-8">Product Designer</h1>
+        <h1 className="font-bold text-center mb-8">
+          Ask Product Designer Anything
+        </h1>
         <div>
           <Dialogs />
         </div>
@@ -67,7 +69,7 @@ function App() {
         <Form onSubmit={handleSubmit} className="input-group mb-3">
           <Form.Control
             name="message"
-            placeholder="Ask Product Designer anything..."
+            placeholder="Your question..."
             // value={message.message}
             value={message}
             // onChange={handleChange}
