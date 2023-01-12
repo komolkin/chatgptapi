@@ -26,7 +26,7 @@ const Dialog = mongoose.model("Dialog", dialogSchema);
 
 const configuration = new Configuration({
   organization: "org-9WevQbvggItOcNJtMQyQhS4L",
-  apiKey: "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",
+  apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 
@@ -47,7 +47,7 @@ app.post("/", async (req, res) => {
   const { message } = req.body;
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `Pretend you are Product Designer. Person: ${message}? You:`,
+    prompt: `Pretend you are NFT trader. Person: ${message}? You:`,
     max_tokens: 100,
     temperature: 0,
   });
