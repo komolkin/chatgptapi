@@ -1,8 +1,13 @@
 html,
 body {
   font-family: "Inter", "system-ui" !important;
+  font-feature-settings: "ss01", "tnum" !important;
   background-color: #ffffff !important;
   font-size: 1.1rem;
+}
+a {
+  color: #555555 !important;
+  text-decoration: none !important;
 }
 
 @supports (font-variation-settings: normal) {

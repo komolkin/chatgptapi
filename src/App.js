@@ -82,33 +82,43 @@ function App() {
           {/* items-center justify-center  */}
           <div className="flex h-full items-center justify-center">
             <div className="w-[600px] h-full">
-              <div className="w-[600px] my-[100px]">
+              <div className="w-[600px] my-[140px]">
                 <Dialogs />
               </div>
 
               <Form
                 onSubmit={handleSubmit}
-                className="fixed bottom-0 flex w-[600px] py-[32px] bg-[#ffffff]"
+                className="fixed bottom-0 w-[600px] pt-[32px] pb-[8px] bg-[#ffffff]"
               >
-                <Form.Control
-                  id="field1"
-                  name="message"
-                  placeholder="Your question..."
-                  // value={message.message}
-                  value={message}
-                  // onChange={handleChange}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className="shrink !rounded-[16px] !px-[16px] !py-[12px]"
-                  autocomplete="off"
-                />
-                <Button
-                  variant="dark"
-                  type="submit"
-                  onClick={refreshPage}
-                  className="!px-[16px] !py-[12px] ml-2 !rounded-[16px]"
-                >
-                  {buttonText}
-                </Button>
+                <div className="relative">
+                  <Form.Control
+                    id="field1"
+                    name="message"
+                    placeholder="Your question..."
+                    // value={message.message}
+                    value={message}
+                    // onChange={handleChange}
+                    onChange={(e) => setMessage(e.target.value)}
+                    className="shrink !rounded-[16px] !px-[16px] !py-[12px]"
+                    autocomplete="off"
+                  />
+                  <Button
+                    variant="link"
+                    type="submit"
+                    onClick={refreshPage}
+                    className="!text-black !no-underline !font-medium !px-[16px] !py-[12px] ml-2 !rounded-[16px] absolute right-0 top-0"
+                  >
+                    {buttonText}
+                  </Button>
+                </div>
+                <div className="w-[600px] text-[15px] text-black/[.4] text-center py-[24px]">
+                  Created by{" "}
+                  <a href="https://twitter.com/dappdesigner">dappdesigner</a>{" "}
+                  using <a href="https://reactjs.org">React</a>,{" "}
+                  <a href="https://tailwindcss.com/">Tailwind</a>,{" "}
+                  <a href="https://beta.openai.com/">OpenAI</a>, and{" "}
+                  <a href="https://docs.family.co/connectkit">Family</a>.
+                </div>
               </Form>
             </div>
           </div>
