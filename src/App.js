@@ -74,7 +74,7 @@ function App() {
           }}
         >
           <div className="fixed top-0 flex justify-between items-center h-[92px] w-full px-4">
-            <h1 className="font-medium text-2xl">gm, degen</h1>
+            <h1 className="font-sans font-medium text-2xl">gm, degen</h1>
             <div>
               <ConnectKitButton />
             </div>
@@ -88,7 +88,7 @@ function App() {
 
               <Form
                 onSubmit={handleSubmit}
-                className="fixed bottom-0 flex w-[600px] py-[32px] bg-[#F0F0F2]"
+                className="fixed bottom-0 flex w-[600px] py-[32px] bg-[#ffffff]"
               >
                 <Form.Control
                   id="field1"

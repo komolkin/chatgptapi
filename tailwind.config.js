@@ -2,7 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ["Comic Sans MS", "Chalkboard SE", "Comic Neue"],
+    },
   },
   plugins: [],
 };

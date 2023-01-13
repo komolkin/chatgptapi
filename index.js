@@ -26,7 +26,7 @@ const Dialog = mongoose.model("Dialog", dialogSchema);
 
 const configuration = new Configuration({
   organization: "org-9WevQbvggItOcNJtMQyQhS4L",
-  apiKey: "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",
+  apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 
